@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -14,25 +15,188 @@
     This is a placeholder for base href that will be replaced by the value of
     the `--base-href` argument provided to `flutter build`.
   -->
-  <base href="/">
+  <!-- <base href="/"> -->
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="A new Flutter project.">
+  <meta name="title" content="Personal Portfolio.">
 
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="portfolio">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <link rel="apple-touch-icon" href="favicon.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/png" href="favicon.png" />
 
   <title>portfolio</title>
   <link rel="manifest" href="manifest.json">
+
+  <style>
+    body {
+      margin: 0;
+      background-color: #121212;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .loader-wrapper {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .loader-title {
+      font-size: 26px;
+      margin-bottom: 24px;
+      font-weight: bold;
+    }
+
+
+    .three-arched-loader {
+      --size: 50px;
+      /* Default size - can be overridden */
+      --color: #4285F4;
+      /* Default color - can be overridden */
+      --ring-width: calc(var(--size) * 0.08);
+      --animation-duration: 10s;
+      /* Slower animation (3 seconds) */
+      position: relative;
+      width: var(--size);
+      height: var(--size);
+      padding: calc(var(--size) * 0.04);
+    }
+
+    .three-arched-loader svg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      transform-origin: center;
+      animation: rotate var(--animation-duration) linear infinite;
+    }
+
+    .three-arched-loader .arc {
+      fill: none;
+      stroke: var(--color);
+      stroke-width: var(--ring-width);
+      stroke-linecap: round;
+      stroke-dasharray: 0 300;
+      animation: arc-animation var(--animation-duration) ease-in-out infinite;
+    }
+
+    @keyframes rotate {
+
+      0%,
+      50% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(0deg);
+      }
+
+      25% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(240deg);
+      }
+
+      50.1%,
+      100% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(240deg);
+      }
+
+      75% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(400deg);
+      }
+    }
+
+    @keyframes arc-animation {
+
+      0%,
+      50% {
+        animation-timing-function: ease-in-out;
+        stroke-dasharray: 0 300;
+        stroke-dashoffset: 0;
+      }
+
+      12.5% {
+        animation-timing-function: ease-in-out;
+        stroke-dasharray: 210 90;
+      }
+
+      25% {
+        animation-timing-function: ease-in-out;
+        stroke-dasharray: 10 290;
+      }
+
+      37.5% {
+        animation-timing-function: ease-in-out;
+        stroke-dasharray: 210 90;
+      }
+
+      50% {
+        animation-timing-function: ease-in-out;
+        stroke-dasharray: 0 300;
+      }
+
+      50.1%,
+      100% {
+        animation-timing-function: ease-in-out;
+        stroke-dasharray: 0 300;
+        stroke-dashoffset: 0;
+      }
+
+      62.5% {
+        animation-timing-function: ease-in-out;
+        stroke-dasharray: 210 90;
+      }
+
+      75% {
+        animation-timing-function: ease-in-out;
+        stroke-dasharray: 10 290;
+      }
+
+      87.5% {
+        animation-timing-function: ease-in-out;
+        stroke-dasharray: 210 90;
+      }
+
+      100% {
+        animation-timing-function: ease-in-out;
+        stroke-dasharray: 0 300;
+      }
+    }
+  </style>
+
 </head>
+
 <body>
+
+  <div class="loader-wrapper" id="loader">
+    <div class="three-arched-loader" style="--size: 55px; --color: #18ffff;">
+      <svg viewBox="0 0 100 100">
+        <!-- First arc at 210° -->
+        <path class="arc" d="M50,10 A40,40 0 0,1 85,50" transform="rotate(210 50 50)" />
+
+        <!-- Second arc at 90° -->
+        <path class="arc" d="M50,10 A40,40 0 0,1 85,50" transform="rotate(90 50 50)" />
+
+        <!-- Third arc at -30° -->
+        <path class="arc" d="M50,10 A40,40 0 0,1 85,50" transform="rotate(-30 50 50)" />
+      </svg>
+    </div>
+
+    <div class="loader-title">Personal Portfolio</div>
+
+  </div>
+
+
+
+
   <script src="flutter_bootstrap.js" async></script>
 </body>
+
 </html>
